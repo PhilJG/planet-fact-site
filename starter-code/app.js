@@ -18,6 +18,8 @@ const replaceTemplate = (temp, planet) => {
   output = output.replace(/{{RADIUS}}/g, planet.radius);
   output = output.replace(/{{TEMPERATURE}}/g, planet.temperature);
 
+  output = output.replace(/{{IMAGE_OVERVIEW}}/g, planet.images.planet);
+
   return output;
 };
 
@@ -61,6 +63,16 @@ const server = http.createServer((req, res) => {
     const planetData = dataObj.find(
       (el) => el.name.toLowerCase() == planetName
     ); // find the corresponding planet data
+
+    // Check if planetData exists. If it doesn't, send a 404 response.
+    if (!planetData) {
+      res.writeHead(404, {
+        "Content-type": "text/html",
+        "my-own-header": "hello-world",
+      });
+      res.end("Planet not found");
+      return; // This is important to prevent the rest of the code from executing
+    }
 
     if (planetData) {
       res.writeHead(200, { "Content-type": "text/html" });
