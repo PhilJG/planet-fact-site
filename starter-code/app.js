@@ -77,10 +77,23 @@ const server = http.createServer((req, res) => {
     if (planetData) {
       res.writeHead(200, { "Content-type": "text/html" });
       // generate the HTML for the planet page
-      const output = replaceTemplate(planetPage, planetData);
+      const output = replaceTemplate(mainPage, planetData);
 
       res.end(output);
     }
+  } else if (pathName.startsWith("/assets/")) {
+    const assetPath = path.join(__dirname, "assets", pathName.split("/")[2]);
+
+    fs.readFile(assetPath, (err, data) => {
+      if (err) {
+        res.writeHead(404);
+        res.end("File not found");
+      } else {
+        const contentType = path.extname(assetPath);
+        res.writeHead(200, { "Content-Type": contentType });
+        res.end(data);
+      }
+    });
   } else {
     res.writeHead(404, {
       "Content-type": "text/html",

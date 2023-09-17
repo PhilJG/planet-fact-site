@@ -23,5 +23,44 @@
       ><a href="/planet/jupiter">Jupiter</a><a href="/planet/saturn">Saturn</a
       ><a href="/planet/uranus">Uranus</a><a href="/planet/neptune">Neptune</a>
     </nav>
+    <figure>
+      <img src="{{IMAGE_OVERVIEW}}" alt="{{NAME}}" width="500px" />
+
+      {{NAME}}
+      <!-- Overview Content Start -->
+
+      <p>{{OVERVIEW}}</p>
+      <p>Source : {{PLANET_W}}</p>
+
+      <!-- URL: https://en.wikipedia.org/wiki/Mercury_(planet) -->
+
+      <!-- Overview Content End -->
+
+      <!-- Internal Structure Content Start -->
+
+      <p>{{STRUCTURE}}</p>
+      <p>Source : Wikipedia</p>
+
+      <!-- URL: https://en.wikipedia.org/wiki/Mercury_(planet)#Internal_structure -->
+
+      <!-- Internal Structure Content End -->
+
+      <!-- Surface Geology Content Start -->
+
+      <p>{{GEOLOGY}}</p>
+      <p>Source : Wikipedia</p>
+
+      <!-- URL: https://en.wikipedia.org/wiki/Mercury_(planet)#Surface_geology -->
+
+      <!-- Surface Geology Content End -->
+
+      01 Overview 02 Internal Structure 03 Surface Geology
+      <ul>
+        <li>Rotation Time {{ROTATION}} Days</li>
+        <li>Revolution Time {{REVOLUTION}}</li>
+        <li>Days Radius {{RADIUS}} KM</li>
+        <li>Average Temp. {{TEMPERATURE}}°c</li>
+      </ul>
+    </figure>
   </body>
 </html>
